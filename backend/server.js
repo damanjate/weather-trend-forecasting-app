@@ -38,6 +38,7 @@ async function getWeatherData(location, start_date, end_date) {
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${place.latitude}` +
     `&longitude=${place.longitude}` +
+    `&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation` +
     `&daily=temperature_2m_max,temperature_2m_min,precipitation_sum` +
     `&start_date=${start_date}` +
     `&end_date=${end_date}` +
@@ -51,6 +52,7 @@ async function getWeatherData(location, start_date, end_date) {
 
   return {
     place,
+    current: weatherResponse.data.current,
     daily: weatherResponse.data.daily
   };
 }
@@ -105,7 +107,7 @@ app.post("/weather", async (req, res) => {
       });
     }
 
-    const { place, daily } = weatherData;
+    const { place, current, daily } = weatherData;
 
     const sql = `
       INSERT INTO weather_requests
@@ -141,6 +143,7 @@ app.post("/weather", async (req, res) => {
       location: place.name,
       latitude: place.latitude,
       longitude: place.longitude,
+      current,
       forecast: daily
     });
 

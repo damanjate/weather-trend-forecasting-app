@@ -170,6 +170,43 @@ function App() {
           <p>Latitude: {weatherData.latitude}</p>
           <p>Longitude: {weatherData.longitude}</p>
 
+          <a
+            className="map-button"
+            href={`https://www.google.com/maps?q=${weatherData.latitude},${weatherData.longitude}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Location on Google Maps
+          </a>
+
+          <div className="current-weather">
+            <h3>Current Weather</h3>
+
+            <div className="current-grid">
+
+              <div>
+                <strong>🌡 Temperature</strong>
+                <p>{weatherData.current?.temperature_2m}°C</p>
+              </div>
+
+              <div>
+                <strong>💧 Humidity</strong>
+                <p>{weatherData.current?.relative_humidity_2m}%</p>
+              </div>
+
+              <div>
+                <strong>💨 Wind Speed</strong>
+                <p>{weatherData.current?.wind_speed_10m} km/h</p>
+              </div>
+
+              <div>
+                <strong>🌧 Precipitation</strong>
+                <p>{weatherData.current?.precipitation} mm</p>
+              </div>
+
+            </div>
+          </div>
+
           <h3>Temperature Trend</h3>
 
           <div className="chart-box">
@@ -235,6 +272,10 @@ function App() {
       <div className="weather-card">
         <h2>Saved Weather Requests</h2>
 
+        <p className="request-count">
+          Total Weather Requests: <strong>{savedRequests.length}</strong>
+        </p>
+
         {savedRequests.length === 0 ? (
           <p>No saved requests yet.</p>
         ) : (
@@ -254,9 +295,9 @@ function App() {
                 {savedRequests.map((item) => (
                   <tr key={item.id}>
                     <td>{item.location_name}</td>
-                    <td>{item.start_date}</td>
-                    <td>{item.end_date}</td>
-                    <td>{item.created_at}</td>
+                    <td>{new Date(item.start_date).toLocaleDateString()}</td>
+                    <td>{new Date(item.end_date).toLocaleDateString()}</td>
+                    <td>{new Date(item.created_at).toLocaleDateString()}</td>
                     <td>
                       <button
                         className="delete-button"
@@ -272,7 +313,22 @@ function App() {
           </div>
         )}
       </div>
+      <footer className="footer">
+        <h3>Developed by Dulce Alberto Manjate</h3>
+
+        <p>
+          This weather application was developed as part of the AI Engineer Internship
+          Technical Assessment.
+        </p>
+
+        <p>
+          PM Accelerator helps aspiring professionals gain practical experience through
+          real-world projects, mentorship, and career development opportunities in
+          product management, technology, AI, and innovation.
+        </p>
+      </footer>
     </div>
+    
   );
 }
 
