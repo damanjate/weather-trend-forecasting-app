@@ -2,23 +2,70 @@
 
 ## Project Overview
 
-Weather Trend Forecasting is a full-stack weather application built using React, Node.js, Express, MySQL, and Open-Meteo API.
+Weather Trend Forecasting is a full-stack weather application developed using React, Vite, Node.js, Express, MySQL, Open-Meteo API, and Google Maps integration.
 
-The application allows users to search weather forecasts by location and date range, visualize temperature and precipitation trends, save weather requests into a MySQL database, and export data as JSON.
+The application allows users to search weather information by location and date range, view current weather conditions, analyze weather trends through charts, store weather requests in a database, export data as JSON, and visualize locations on Google Maps.
+
+This project was developed as part of the AI Engineer Internship Technical Assessment.
 
 ---
 
 ## Features
 
-* Search weather forecasts by city and date range
+### Weather Search
+
+* Search weather by city and date range
+* Validate location and date inputs
+* Retrieve real-time weather information using Open-Meteo API
+
+### Current Weather
+
+* Current temperature
+* Humidity
+* Wind speed
+* Precipitation
+
+### Weather Forecast
+
+* 5-day weather forecast
+* Daily maximum temperature
+* Daily minimum temperature
+* Daily precipitation
+
+### Data Visualization
+
+* Temperature trend line chart
+* Precipitation bar chart
+* Forecast summary cards with weather icons
+
+### Database Persistence
+
 * Save weather requests into MySQL
-* Full CRUD operations
-* Temperature and precipitation charts
-* Weather icons
+* View all previous weather requests
+* Track total weather requests
+
+### CRUD Operations
+
+* Create weather requests
+* Read weather requests
+* Update weather requests
+* Delete weather requests
+
+### Additional API Integration
+
+* Google Maps integration
+* View searched locations directly on Google Maps
+
+### Data Export
+
+* Export stored weather requests as JSON
+
+### User Experience
+
+* Responsive design
 * Loading spinner
-* Export saved requests as JSON
-* Responsive frontend design
 * Error handling and validation
+* User-friendly dashboard interface
 
 ---
 
@@ -39,24 +86,48 @@ The application allows users to search weather forecasts by location and date ra
 * MySQL
 * Open-Meteo API
 
+### External Integrations
+
+* Open-Meteo API
+* Google Maps
+
+---
+
+## System Architecture
+
+Frontend (React)
+↓
+REST API (Express)
+↓
+Open-Meteo API
+↓
+MySQL Database
+
 ---
 
 ## API Endpoints
 
-| Method | Endpoint             | Description              |
-| ------ | -------------------- | ------------------------ |
-| GET    | /                    | Home route               |
-| POST   | /weather             | Create weather request   |
-| GET    | /weather             | Get all weather requests |
-| PUT    | /weather/:id         | Update weather request   |
-| DELETE | /weather/:id         | Delete weather request   |
-| GET    | /weather/export/json | Export data as JSON      |
+| Method | Endpoint             | Description            |
+| ------ | -------------------- | ---------------------- |
+| GET    | /                    | Home Route             |
+| POST   | /weather             | Create Weather Request |
+| GET    | /weather             | Read Weather Requests  |
+| PUT    | /weather/:id         | Update Weather Request |
+| DELETE | /weather/:id         | Delete Weather Request |
+| GET    | /weather/export/json | Export Data as JSON    |
 
 ---
 
 ## Installation
 
-### Backend
+### Clone Repository
+
+```bash
+git clone <repository-url>
+cd weather-trend-app
+```
+
+### Backend Setup
 
 ```bash
 cd backend
@@ -64,12 +135,26 @@ npm install
 npm run dev
 ```
 
-### Frontend
+### Frontend Setup
 
 ```bash
 cd frontend
 npm install
 npm run dev
+```
+
+### Database Setup
+
+Create a MySQL database:
+
+```sql
+CREATE DATABASE weather_trend_db;
+```
+
+Update database credentials inside:
+
+```text
+backend/database.js
 ```
 
 ---
@@ -95,16 +180,29 @@ weather-trend-app
 
 ---
 
+## PM Accelerator
+
+This project was developed as part of the AI Engineer Internship Technical Assessment.
+
+PM Accelerator helps aspiring professionals gain practical experience through real-world projects, mentorship, and career development opportunities in Product Management, Artificial Intelligence, Technology, and Innovation.
+
+---
+
 ## Future Improvements
 
 * User authentication
 * Weather notifications
 * Dark mode
 * Advanced forecasting analytics
-* Mobile app version
+* Historical weather analysis
+* Mobile application version
 
 ---
 
 ## Author
 
-Dulce Alberto Manjate
+**Dulce Alberto Manjate**
+
+Software Engineer | AI & Machine Learning Researcher
+
+Mozambique
